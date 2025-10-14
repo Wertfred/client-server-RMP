@@ -77,7 +77,7 @@ const Order = sequelize.define(
 )
 
 const Order_item = sequelize.define(
-    order_item,
+    'order_item',
     {
         id:{
             type: DataTypes.INTEGER,
@@ -93,3 +93,14 @@ const Order_item = sequelize.define(
         }
     }
 )
+
+Client.hasMany(Order)
+Order.belongsTo(Client)
+
+Order.hasMany(Order_item)
+Order_item.belongsTo(Order)
+
+Product.hasMany(Order_item)
+Order_item.belongsTo(Product)
+
+export default {Client, Product, Order, Order_item};
