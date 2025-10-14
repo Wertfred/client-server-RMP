@@ -29,9 +29,20 @@
 
 import 'dotenv/config';
 import express from 'express';
+import sequelize from './db.js';
 const app = express();
 const PORT = process.env.PORT;
-app.listen(PORT,() => {
+const start = async() => {
+    try {
+        app.listen(PORT,() => {
     console.log(`Сервер работает на порту ${PORT}`)
-});
+        });
+         await sequelize.authenticate();
+         console.log("Подключение к базе данных выполнено успешно")
+    }
+    catch(error){
+        console.log("не удалось подключиться к базе данных", error);
+    }
+}
+start();
 
