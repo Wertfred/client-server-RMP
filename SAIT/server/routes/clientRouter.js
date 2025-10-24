@@ -3,7 +3,7 @@ import {getClietns} from '../controllers/clientController.js'
 import {postClietns} from '../controllers/clientController.js'
 
 const clientRouter = new Router();
-clientRouter.get('/getclient', getClietns)
-clientRouter.post('/postclient', postClietns)
+clientRouter.get('/', getClietns)
+clientRouter.post('/', postClietns)
 
 export default clientRouter

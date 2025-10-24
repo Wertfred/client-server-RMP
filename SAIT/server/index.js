@@ -34,11 +34,13 @@ import sequelize from './db.js';
 import models from './models/models.js';
 import cors from 'cors';
 import Router from './routes/router.js'
+import errorHandler from './middleware/errorHandler.js'
 
 const app = express();
+app.use(errorHandler);
 app.use(cors());
 app.use(express.json());
-app.use('/api', Router)
+app.use('/api', Router);
 const PORT = process.env.PORT;
 // начала асинхронной функции
 const start = async() => {
