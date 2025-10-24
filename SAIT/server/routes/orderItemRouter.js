@@ -1,6 +1,5 @@
 import {Router} from 'express'
-import {getOrder_item} from '../controllers/orderItemController.js'
-import {postOrder_item} from '../controllers/orderItemController.js'
+import {getOrder_item, postOrder_item} from '../controllers/orderItemController.js'
 
 const order_itemRouter = new Router();
 order_itemRouter.get('/', getOrder_item)

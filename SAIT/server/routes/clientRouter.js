@@ -1,9 +1,9 @@
 import {Router} from 'express'
-import {getClietns} from '../controllers/clientController.js'
-import {postClietns} from '../controllers/clientController.js'
+import {getClients, postClient, getOneClient, deleteClient} from '../controllers/clientController.js'
 
 const clientRouter = new Router();
-clientRouter.get('/', getClietns)
-clientRouter.post('/', postClietns)
-
+clientRouter.get('/', getClients)
+clientRouter.get('/:id', getOneClient)
+clientRouter.post('/', postClient)
+clientRouter.delete('/:id', deleteClient)
 export default clientRouter

@@ -1,5 +1,5 @@
 import sequelize from "../db.js";
-import { DataTypes, INTEGER} from "sequelize";
+import { DataTypes} from "sequelize";
 
 const Client = sequelize.define(
     'Clients',
