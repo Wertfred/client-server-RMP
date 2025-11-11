@@ -29,9 +29,7 @@
 // импорт нужных библиотек/функций
 import 'dotenv/config';
 import express from 'express';
-import { json } from 'sequelize';
 import sequelize from './db.js';
-import models from './models/models.js';
 import cors from 'cors';
 import Router from './routes/router.js'
 import errorHandler from './middleware/errorHandler.js'
