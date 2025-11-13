@@ -13,27 +13,40 @@ export const getOrder = async(req,res,next) => {
         };
 }
 
-export const postOrder = async(req,res,next) => {
-    try{
-        const postOrder = await Order.create()
+// export const postOrder = async(req,res,next) => {
+//     try{
+//         const {status} = req.body;
+//         const newClient = await Client.create({name, rating, age});
+//         res.status(201).json({message:'Добавлено'});
+//     }
+//     catch(err){
+//         next(err)
+//     };
+// }
 
-        res.status(200).json(postOrder)
+export const updateStatusOrder = async(req, res, next) => {
+    try{
+        const {id} = req.params;
+        const {status} = req.body;
+        const order = await Order.findByPk(id);
+        if(!order) return res.status(404).json({message: "заказ не найден"})
+
+        order.status = status;
+        await order.save();
+        res.json(order);
     }
     catch(err){
         next(err)
     };
 }
 
-export const updateStatusOrder = async(req, res, next) => {
+export const deleteOrder = async(req,res,next) => {
     try{
         const {id} = req.params;
-        const {status} = req.body;
-        const order = await Order.findByPk(id);        
-        if(!order) return res.status(404).json({message: "заказ не найден"})
+    
+        const delOrder = await Order.destroy({where: {id}})
 
-        order.status = status;
-        await order.save();
-        res.json(order);        
+        res.status(200).json({message: 'запись удалена'})
     }
     catch(err){
         next(err)

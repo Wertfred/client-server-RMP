@@ -5,7 +5,6 @@ const {Client} = models;
 export const getClients = async(req,res,next) => {
         try{
             const getClients = await Client.findAll()
-    
             res.status(200).json(getClients)
         }
         catch(err){
@@ -27,7 +26,6 @@ export const postClient = async(req,res,next) => {
 export const getOneClient = async(req,res,next) => {
     try{
         const {id} = req.params;
-    
         const oneClient = await Client.findOne({where: {id}})
 
         res.status(200).json(oneClient)
